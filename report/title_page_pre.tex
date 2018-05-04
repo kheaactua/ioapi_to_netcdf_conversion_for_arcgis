@@ -1,0 +1,44 @@
+% Define stuff to use for the title page.
+% copied from some french dude...
+% I modified it to get it to work
+
+\def\blurb{
+  Carleton University \\
+  Department of Geography and Environmental Studies \\
+  Faculty of Arts and Social Sciences \\[1em]
+}
+
+\def\clap#1{\hbox to 0pt{\hss #1\hss}}%
+
+\newcommand{\cligne}[1] {
+	\hbox to \hsize{
+		\vbox{\centering #1}
+	}
+}
+
+\newcommand{\iligne}[1] {
+	\hbox to \hsize{
+		\vbox{\hspace{23em} #1}
+	}
+}
+
+\def\haut#1#2#3{
+	\hbox to \hsize{
+		\rlap{\vtop{\raggedright #1}}
+		\hss
+		\clap{\vtop{\centering #2}}
+		\hss
+		\llap{\vtop{\raggedleft #3}}
+	}
+}
+
+\def\bas#1#2#3{
+	\hbox to \hsize{
+		\rlap{\vbox{\raggedright #1}}
+		\hss
+		\clap{\vbox{\centering #2}}
+		\hss
+		\llap{\vbox{\raggedleft #3}}
+	}
+}
+

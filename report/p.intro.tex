@@ -1,0 +1,57 @@
+This learning module is aimed towards students and researchers who
+work with \acf{aqm}.  Specifically, this learning module introduces a
+tool that has been developed to import \ac{aqm} output into ArcGIS.
+
+Air quality modelling involves assimilating meteorological, emission,
+land use and solar data and running \acfp{ctm} to model the
+concentration of gas and particle species that can be harmful to human
+health.  Though the techniques discussed in this learning module are
+applicable to almost any model, it is particularly aimed at those who
+use the \acs{usepa}'s model \ac{cmaq}.  This is because the main
+challenge that this learning module addresses is specific to the file
+format output by \ac{cmaq}
+
+The \ac{aqm} community is one that is growing every year as air
+quality issues become more relevant to every day life.  One factor
+that contributes to the growth of this - or any - community is the
+availability of tools to aid ones research.  In this authors
+experience, a few large software tools are developed by large
+governmental organizations such as the \acs{usepa} which serve as the
+backbone to the modelling process, then small research group develop
+smaller innovative tools that suits their specific needs.
+
+For example, \acs{bams} produces \ioapi~-a \netcdf~wrapper layer -
+which is used for all inputs and outputs to \ac{cmaq}, and then an
+individual research group will develop automation scripts to
+manipulate the inputs and outputs in any given way, and send the data
+to some visualization package.
+
+\ac{cmaq} - for better or for worse - has chosen the aforementioned file format,
+\ioapi, that cannot properly be imported into GIS programs.  The
+result is that modellers using the \ioapi~format are therefore cut off
+form the ArcGIS community tools - a vast library of tools to aid in
+anything from data manipulation to data analysis.  This learning
+module introduces a tool that can convert \ioapi~files to a form that
+can be read by ArcGIS, thus bridging the gap between the two
+technologies and perhaps even the two communities.
+
+This learning module reads as a tutorial where the overall goal is to
+use ArcGIS to aid in domain set up to model evaluation.  To follow
+this learning module, some non-standard prerequisite software is
+however required (python libraries and ArcGIS upgrades), this is
+described in section \ref{prereq}
+
+Section \ref{define_grids} walks the reader through creating the
+domain they wish to model.  Notes on what makes good domain choices as
+well as instructions on defining your projection are presented.
+
+Section \ref{import_ioapi_data} begins by assuming that the reader has
+used the domains set up in section \ref{define_grids} and now have
+\ioapi~output files to import into ArcGIS.  This section introduces
+the tool to import \ioapi~data.
+
+Section \ref{eval} briefly introduces basic techniques of model
+evaluation using ArcGIS.  This section is by no means comprehensive,
+and is only intended to provide the reader with an idea of the
+possibilities.
+

@@ -1,0 +1,46 @@
+\section{Pre-Requisite Software}
+\label{prereq}
+
+Many efforts were made for the toolbox and techniques used in this learning
+module to not rely on any non-default software, alas, some snuck in.
+This learning module requires some python modules, and ArcGIS to be
+upgraded to Service Pack 1.
+
+The required python module is called the \emph{MultipartPostHandler} and is
+used to transfer the IOAPI to and from the server (purpose described
+in the appendix \ref{ioapi_tool_detail}.)  This module however is only
+available as a python \emph{egg}, which requires their own library to
+be installed.
+
+Therefore, it is recommended the following steps be followed.
+Remember throughout these instructions that ArcGIS only supports
+python 2.6, so if ever confronted with a choice of package to download
+based on python version, choose 2.6.
+\begin{enumerate}
+	%\item Download \emph{easy\_install}, this is available at \url{http://peak.telecommunity.com/dist/ez\_setup.py}
+	\item Download \emph{setup tools} \\
+	This is described at
+\url{http://packages.python.org/an\_example\_pypi\_project/setuptools.html}
+and available for download at
+\url{http://pypi.python.org/pypi/setuptools} \\
+	You will require the file named
+\emph{setuptools-0.6c11.win32-py2.6.exe}
+	\item Once downloaded, install it.
+	\item Ensure that your python is in your path.  If you're using
+the python installed with ArcGIS (likely), this likely installed the
+setup tools (such as \emph{easy\_install}) into
+\texttt{C:/Python26/ArcGIS10.0/Scripts}.  Therefore, this is likely
+the path to add to your path variable in \textbf{Control Panel}
+$\rightarrow$ \textbf{System} $\rightarrow$ \textbf{Advance}
+$\rightarrow$ \textbf{Environment Variables}
+	\item Download the \emph{MultipartPostHandler} from
+\url{http://pypi.python.org/pypi/MultipartPostHandler/}
+	\item Open the command prompt, and install the \emph{egg} file for
+this module with the \emph{easy\_install} command.
+	\item Download ArcGIS v10 Service Pack 1 from
+\url{http://resources.arcgis.com/content/patches-and-service-packs?fa=viewPatch\&PID=15\&MetaID=1685#install-Windows}
+\\
+	Note, this takes considerably longer than you might expect to
+install.
+\end{enumerate}
+

@@ -1,0 +1,205 @@
+\documentclass[11pt,letterpaper,twoside]{report}
+
+
+\title{GEOG 5804 - Project}
+\author{Matthew Russell -- 100 298 305}
+\date{December 06 2011}
+
+\input{title_page_pre.tex}
+
+\def\unit#1{
+	~\mathrm{ #1}
+}
+
+% Syntax highlighting
+% Minted
+\usepackage{minted}
+
+% Highlighting
+\usepackage{soul}
+
+% Acronyms
+\usepackage[printonlyused]{acronym}
+
+% Set the margins to something like 1"
+\addtolength{\hoffset}{-1cm}
+\addtolength{\textwidth}{2cm}
+
+%\addtolength{\voffset}{-1cm}
+\addtolength{\textheight}{2cm}
+
+%\usepackage[dvips]{graphicx}
+%\usepackage{graphicx,color,psfrag}
+\usepackage{graphicx}
+
+% Use matlab tex figures
+%\usepackage{pst-plot}
+%\usepackage{pst-node}
+
+% Colours...
+\usepackage[pdftex]{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+% Math stuff
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{titling}
+
+% Verbatim stuff
+\usepackage{verbatim}
+
+% Change margins
+\newenvironment{changemargin}[2]{%
+  \begin{list}{}{%
+    \setlength{\topsep}{0pt}%
+    \setlength{\leftmargin}{#1}%
+    \setlength{\rightmargin}{#2}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemindent}{\parindent}%
+    \setlength{\parsep}{\parskip}%
+  }%
+  \item[]}{\end{list}}
+
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,fit,positioning,shapes,backgrounds,fadings,shadows,patterns}
+
+% Colours...
+\usepackage{color}
+\colorlet{notescolor}{orange!40!white}
+\colorlet{notescolor}{orange!40!white}
+\colorlet{LightSkyBlue}{blue!40!green!30!red}  % Try to get RGB=#87CEFA, or RGB=(135,206,250)
+\colorlet{OrangyRed}{blue!40!green!30!red}
+\newcommand{\notes}[1]{\vspace{0.5cm} \tikz \node[fill=notescolor,text
+width=13cm] {#1};}
+
+% Set font
+\usepackage[T1]{fontenc}
+\usepackage[sc]{mathpazo} % This line sets the font to palatino
+\linespread{1.15}         % Palatino needs more leading (space between lines), original: 1.05
+
+% Fancy headings, this uses tikz
+\usepackage{kpfonts}
+\usepackage[explicit]{titlesec}
+\newcommand*\chapterlabel{}
+\titleformat{\chapter}
+  {\gdef\chapterlabel{}
+   \normalfont\sffamily\Huge\bfseries\scshape}
+  {\gdef\chapterlabel{\thechapter. }}{0pt}
+  {\begin{tikzpicture}[remember picture,overlay]
+    \node[yshift=-3cm] at (current page.north west)
+      {\begin{tikzpicture}[remember picture, overlay]
+        \draw[fill=OrangyRed] (0,0) rectangle
+          (\paperwidth,3cm);
+        \node[anchor=east,xshift=.9\paperwidth,rectangle,
+              rounded corners=20pt,inner sep=11pt,
+              fill=OrangyRed]
+              {\color{white}\chapterlabel#1};
+       \end{tikzpicture}
+      };
+   \end{tikzpicture}
+  }
+\titlespacing{\chapter}{0pt}{50pt}{-60pt}
+%\titlespacing*{\subsection}{0pt}{50pt}{60pt}
+
+% Used for checklists and stuff
+\renewcommand{\checkmark}{\begin{tikzpicture}
+	\colorlet{darkgreen}{green!50!black}
+	\draw[scale=0.07,line width=2pt,color=darkgreen] (0,2.5) .. controls (0.5,3) .. (2,1)
+	                             .. controls (2,1) and (3,4) .. (6,6);
+\end{tikzpicture}}
+
+% Set where to find the images
+\graphicspath{{images/}}
+\newcommand*{\DOT}{.} % ffs..
+\newcommand{\ud}{\mathrm{d}}
+
+\newcommand{\file}[1]{\emph{#1}}
+\newcommand{\code}[1]{\emph{#1}}
+%\newcommand{\url}[1]{\texttt{#1}}
+
+\newcommand{\ozone}{O$_3$}
+\newcommand{\no}{NO~}
+\newcommand{\nox}{NO$_x$}
+\newcommand{\eg}{e.g.}
+\newcommand{\ie}{i.e.}
+\newcommand{\netcdf}{NetCDF}
+\newcommand{\ioapi}{IOAPI}
+\newcommand{\fortran}{\textsc{Fortran95}}
+\newcommand{\fortrankk}{\textsc{Fortran}}
+
+% Double space
+\usepackage{setspace}
+
+%Wrap figure
+\usepackage{wrapfig}
+
+\begin{document}
+
+\input{p.cover_letter.tex}
+
+% Articles don't start titles on a new page usually, but we want to. So, use the
+% titlepage environment.
+
+\input{title_page.tex}
+
+\pagestyle{empty}
+\cleardoublepage
+\pagenumbering{roman}
+\thispagestyle{plain}
+\tableofcontents
+\cleardoublepage
+
+\pagestyle{plain}
+\pagenumbering{arabic}
+\doublespace
+\chapter{Introduction}
+\input{p.intro.tex}
+
+
+% Pre-req software as well as installation notes
+\input{p.prereq.tex}
+
+\input{p.incl_mat.tex}
+
+% Relative Point value toolbox: http://arcscripts.esri.com/details.asp?dbid=13022
+
+\chapter{Defining Your Domain}
+\label{define_grids}
+\input{p.define_grid.tex}
+\cleardoublepage
+
+\chapter{Import IOAPI Data}
+\label{import_ioapi_data}
+\input{p.import_ioapi.tex}
+\cleardoublepage
+
+\chapter{Evaluating Results Against Observation}
+\label{eval}
+\input{p.eval.tex}
+\cleardoublepage
+
+% Acronyms
+\chapter*{Acronyms}
+\input{acronyms.tex}
+\cleardoublepage
+
+\appendix
+\chapter{Defining a Projection in ArcGIS}
+\label{defining_projection}
+\input{p.appendix.define_proj.tex}
+\cleardoublepage
+
+\chapter{Make \ioapi~Raster File Tool}
+\label{ioapi_tool_detail}
+\input{p.appendix.fixioapi_tool.tex}
+
+\end{document}
